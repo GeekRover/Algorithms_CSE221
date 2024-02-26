@@ -1,0 +1,3 @@
+id_lst: 22101699 Mark: 1205
+id_lst: 22101815 Mark: 1100
+id_lst: 22101888 Mark: 1080
