@@ -1,5 +1,5 @@
-input_path = 'input1_A.txt'
-output_path = 'output1_A.txt'
+input_path = 'input1B.txt'
+output_path = 'output1b.txt'
 
 def graphRepAdjList(input_file):
     (n, m) = tuple(map(int, input_file.readline().split(" ")))
@@ -11,20 +11,26 @@ def graphRepAdjList(input_file):
         inDeg[v] += 1
     return (graph, inDeg, n)
 
-def dfs(G, v, visited, inDeg, result):
+def bfs(G, v, visited, result, Q, inDeg):
     visited.append(v)
-    result.append(v)
-    for element in G[v]:
-        inDeg[element] -= 1
-        if element not in visited and inDeg[element] == 0:
-            dfs(G, element, visited, inDeg, result)
+    Q.append(v)
+    while Q:
+        x = Q.pop(0)
+        result.append(x)
+        for adj in G[x]:
+            inDeg[adj] -= 1
+            if adj not in visited and inDeg[adj] == 0:
+                visited.append(adj)
+                Q.append(adj)
 
 def topSort(graph, inDeg, node, output_file):
     result = []
     visited = []
+    Q = []
     for i in range(1, len(graph)):
         if inDeg[i] == 0 and i not in visited:
-            dfs(graph, i, visited, inDeg, result)
+            bfs(graph, i, visited, result, Q, inDeg)
+
     if len(result) < node:
         output_file.write('IMPOSSIBLE\n')
     else:
