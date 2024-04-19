@@ -1,4 +1,4 @@
-input_path = 'input1B.txt'
+input_path = 'input1b.txt'
 output_path = 'output1b.txt'
 
 def graphRepAdjList(input_file):

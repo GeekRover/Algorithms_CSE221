@@ -1,5 +1,5 @@
-input_path = 'input1_A.txt'
-output_path = 'output1_A.txt'
+input_path = 'input1a.txt'
+output_path = 'output1a.txt'
 
 def graphRepAdjList(input_file):
     (n, m) = tuple(map(int, input_file.readline().split(" ")))
